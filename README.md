@@ -1,4 +1,10 @@
-# Test1
+# Email Validation and Listing
+
+Direction to view:
+- Fork this repo
+- Navigate to directory in your terminal
+- npm install
+- ng serve
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
 
