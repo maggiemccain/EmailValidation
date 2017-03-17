@@ -1,16 +1,25 @@
-<div #header>
-  <h1>Email Listings:</h1>
-  <!--<p></p>-->
-</div>
-<app-error-message [messageType]="validationMessage" ></app-error-message>
-<form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm)">
-  <label for="email">Email address:</label>
-  <input type="text" class="form-control" required name="email" [(ngModel)]="model.emailAddress">
-  <!--disable button till ng-dirty-->
-  <button [disabled]="formEmpty()">Submit</button>
-</form>
-<div #display>
-  <select>
-    <option *ngFor="let email of emailList" [value]="email">{{email}}</option>
-  </select>
+<div class="container">
+  <div class="header">
+    <h1>Email Listing</h1>
+    <p>Please add your email to our catalogue!</p>
+  </div>
+  <section class="pull-left">
+    <form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)">
+      <div class="form-group">
+        <label for="emailAddress">Email address:</label>
+        <input type="text" class="form-control" required name="emailAddress" placeholder="Your email here!" [(ngModel)]="model.emailAddress">
+      </div>
+      <app-error-message [messageType]="validationMessage" ></app-error-message>
+      <div class="submit">
+        <button class="button"  [disabled]="formEmpty()" [ngClass]="{disabled : formEmpty()}">Submit</button>
+      </div>
+    </form>
+  </section>
+  <div class="pull-right">
+    <label>View our email catalogue:</label>
+    <select id="dropdown">
+      <option value="">Select</option>
+      <option *ngFor="let email of emailList" [value]="email">{{email}}</option>
+    </select>
+  </div>
 </div>

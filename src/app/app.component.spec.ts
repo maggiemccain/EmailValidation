@@ -2,6 +2,7 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -12,6 +13,12 @@ describe('AppComponent', () => {
     });
     TestBed.compileComponents();
   });
+
+  it('should create error message component', async(() => {
+    let fixture = TestBed.createComponent(ErrorMessageComponent);
+    let unit = fixture.debugElement.componentInstance;
+    expect(unit).toBeTruthy();
+  }));
 
   it('should create the app', async(() => {
     let fixture = TestBed.createComponent(AppComponent);

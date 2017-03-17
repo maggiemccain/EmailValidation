@@ -7,9 +7,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  emailList: Array<any>;
+  emailList: any = [];
   validationMessage: string;
-  // emailAddress: string;
   model: any;
 
   constructor () {
@@ -20,16 +19,15 @@ export class AppComponent {
   };
 
   onSubmit (formSubmitted: any) {
-    this.model = formSubmitted.form;
+    this.model = formSubmitted;
     this.validateEmail(this.model.emailAddress) && this.emailList.push(this.model.emailAddress);
-    this.model.emailAddress = '';
+    this.model = {};
   };
 
   validateEmail(email: string) {
     // chromium email validation 
-    //console.log(this.emailList.includes(email))
     let emailFormat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emailFormat.test(email)) {
+    if (emailFormat.test(email) && !this.emailList.includes(email)) {
       this.validationMessage = 'success';
       return true;
     } else {

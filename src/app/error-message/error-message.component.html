@@ -1,6 +1,8 @@
-<div *ngIf="messageType == 'error'">
-  <h5>Please entera valid email address.</h5>
-</div>
-<div *ngIf="messageType == 'success'">
-  <h5>Thank you for joining the list!</h5>
+<div class="container"[ngClass]="{active: messageType}">
+  <div class="notification" *ngIf="messageType == 'error'">
+    <h5>Please enter a new, valid email address.</h5>
+  </div>
+  <div class="notification" *ngIf="messageType == 'success'">
+    <h5>Thank you for joining the list!</h5>
+  </div>
 </div>
