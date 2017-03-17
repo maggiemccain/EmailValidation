@@ -1,13 +1,13 @@
 <div #header>
-  <h1>Email Listings</h1>
-  <p>Please enter a valid email address to be added to our list.</p>
+  <h1>Email Listings:</h1>
+  <!--<p></p>-->
 </div>
 <app-error-message [messageType]="validationMessage" ></app-error-message>
-<form #emailForm="ngForm" (ngSubmit)="emailSubmission(emailForm.value)">
+<form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm)">
   <label for="email">Email address:</label>
-  <input type="text" class="form-control" required name="email" [(ngModel)]="email">
+  <input type="text" class="form-control" required name="email" [(ngModel)]="model.emailAddress">
   <!--disable button till ng-dirty-->
-  <button>Submit</button>
+  <button [disabled]="formEmpty()">Submit</button>
 </form>
 <div #display>
   <select>
